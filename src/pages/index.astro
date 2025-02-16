@@ -1,0 +1,76 @@
+---
+import AppLayout from "@layouts/AppLayout.astro";
+import { Image } from "astro:assets";
+import authorImage from "../assets/me.jpg";
+import technologies from "@data/technologies.json";
+import Skill from "@components/Skill.astro";
+import { author } from "@data/socials";
+---
+
+<AppLayout title="Daniela Gonzalez - Junior QA Analist">
+  <header class="sm:flex sm:items-center sm:justify-between">
+    <div class="rounded aspect-square w-40 overflow-hidden inline-flex drop-shadow-none lg:drop-shadow-[0px_0px_35px_rgba(83,70,250,0.90)]">
+      <Image
+        src={authorImage}
+        alt="Image of the author"
+        loading="eager"
+        width={320}
+        height={420}
+      />
+    </div>
+    <div class="mt-8 max-w-lg 2xl:max-w-xl sm:my-0 sm:order-first">
+      <h1
+        class="mb-2 text-3xl font-bold tracking-tight dark:text-white text-zinc-900 sm:text-4xl"
+      >
+        {author}
+      </h1>
+      <p class="mb-4 dark:text-zinc-300 text-zinc-700 flex items-center">
+        QA Analist from Cuba 
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 22.5 15" class="inline-block w-6 h-6 ml-2">
+          <path fill="#002a8f" d="M0 0h22.5v15H0z"/>
+          <path d="M3 3h27v3H9v3h21v3H3z"/>
+          <path fill="#cb1515" d="M12.99 7.5 0 15V0z"/>
+          <path d="M4.33 5 2.861 9.523l3.847-2.796H1.952L5.8 9.523z"/>
+        </svg>
+      </p>
+      <p
+        class="max-w-prose font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 sm:max-w-sm md:max-w-xl leading-relaxed"
+      >
+        I am a highly committed and detail-oriented QA Analyst with a strong background in 
+        software quality assurance and testing. Passionate about ensuring excellence in final 
+        products by identifying and resolving defects, as well as staying up-to-date with the 
+        latest methodologies, tools, and trends in quality control. Focused on professional 
+        growth and continuous learning, always striving to follow best practices in testing 
+        and quality assurance. I am currently working on several projects but remain open to 
+        new opportunities to contribute and grow.
+      </p>
+    </div>
+  </header>
+  <section class="mt-10 sm:mt-28" aria-labelledby="section-title">
+    <h2
+      class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
+      id="section-title"
+    >
+      About Me
+    </h2>
+    <p
+      class="max-w-prose mb-8 font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 leading-relaxed"
+    >
+      Here are some of the technologies I have been working with:
+    </p>
+    <ul>
+      {Object.entries(technologies).map(([category, techList]) => (
+        <li class="flex flex-col mb-8 last:mb-0" key={category} id={category}>
+          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+            {category}
+          </h3>
+          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">
+            {techList.map((tech, index) => (
+              <Skill key={index} {...tech} />
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </section>
+</AppLayout>

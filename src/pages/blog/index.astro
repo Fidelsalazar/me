@@ -1,0 +1,152 @@
+---
+import AppLayout from "@layouts/AppLayout.astro";
+import BlogCard from "@components/BlogCard.astro";
+import Header from "@components/Header.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const title = "Daniela Gonzalez - Blog";
+const description =
+  "A space where I share knowledge, experiences, and resources related to technology and software development. Here you'll find tutorials, tips, and useful content to inspire and support your learning journey.";
+
+// RSS Generation function with logging
+const generateRSS = (profileUrl:string) => {
+  console.log('Starting RSS generation process');
+  
+  const feed = document.createElement('div');
+  console.log('Created feed container');
+
+  const rssContent = `<?xml version="1.0" encoding="UTF-8" ?>
+    <rss version="2.0">
+    <channel>
+        <title>LinkedIn Profile Feed</title>
+        <link>${profileUrl}</link>
+        <description>LinkedIn Profile Updates</description>
+        <item>
+            <title>Profile View</title>
+            <link>${profileUrl}</link>
+            <description>Current LinkedIn Profile Content</description>
+        </item>
+    </channel>
+    </rss>`;
+  console.log('RSS content template created');
+
+  const blob = new Blob([rssContent], {type: 'application/rss+xml'});
+  console.log('Blob created with RSS content');
+
+  const rssUrl = URL.createObjectURL(blob);
+  console.log('Generated RSS URL:', rssUrl);
+
+  const rssLink = document.createElement('a');
+  rssLink.href = rssUrl;
+  rssLink.download = 'linkedin-profile.xml';
+  rssLink.innerHTML = 'Descargar RSS Feed';
+  console.log('RSS download link created');
+
+  feed.appendChild(rssLink);
+  console.log('Link added to feed container');
+
+  return feed;
+};
+---
+
+<AppLayout title={title} description={description}>
+  <Header title="Blog" />
+  <p class="max-w-prose mb-10 font-normal dark:text-zinc-400 text-zinc-600 leading-relaxed">
+    {description}
+  </p>
+  
+  <div id="linkedinFeed"></div>
+  
+  <ul class="space-y-8">
+    {
+      posts.map((post) => (
+        <li>
+          <BlogCard
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            description={post.data.description}
+            url={`/blog/${post.slug}/`}
+            tags={post.data.tags}
+          />
+        </li>
+      ))
+    }
+  </ul>
+
+  <script>
+    const profileUrl = 'www.linkedin.com/in/daniela-gonzalez-dominguez';
+    
+    const generateRSS = (profileUrl: string) => {
+      // Log initial profile URL
+      console.group('LinkedIn RSS Generation Process');
+      console.log('Profile URL:', profileUrl);
+  
+      const feed = document.createElement('div');
+      
+      // Create and log RSS content
+      const rssContent = `<?xml version="1.0" encoding="UTF-8" ?>
+        <rss version="2.0">
+        <channel>
+            <title>LinkedIn Profile Feed</title>
+            <link>${profileUrl}</link>
+            <description>LinkedIn Profile Updates</description>
+            <item>
+                <title>Profile View</title>
+                <link>${profileUrl}</link>
+                <description>Current LinkedIn Profile Content</description>
+            </item>
+        </channel>
+        </rss>`;
+      console.log('RSS Content:', rssContent);
+  
+      // Log Blob creation
+      const blob = new Blob([rssContent], {type: 'application/rss+xml'});
+      console.log('Blob Data:', blob);
+  
+      // Log URL creation
+      const rssUrl = URL.createObjectURL(blob);
+      console.log('RSS URL:', rssUrl);
+  
+      const rssLink = document.createElement('a');
+      rssLink.href = rssUrl;
+      rssLink.download = 'linkedin-profile.xml';
+      rssLink.innerHTML = 'Descargar RSS Feed';
+  
+      feed.appendChild(rssLink);
+      
+      // Log final feed element
+      console.log('Final Feed Element:', feed.innerHTML);
+      
+      const linkedinFeed = document.getElementById('linkedinFeed');
+      if (linkedinFeed) {
+        linkedinFeed.appendChild(feed);
+        console.log('Feed successfully added to page');
+      }
+      
+      console.groupEnd();
+      return feed;
+    };
+
+    const result = generateRSS(profileUrl);
+    
+    // Add this to process the RSS data
+    fetch(result.querySelector('a').href)
+        .then(response => response.text())
+        .then(xmlContent => {
+            console.log("RSS Content Parsed:", {
+                content: xmlContent,
+                structured: new DOMParser().parseFromString(xmlContent, "text/xml")
+            });
+        });
+  
+    // Execute and log the entire process
+    console.log('=== Starting RSS Generation ===');
+    console.log('=== RSS Generation Complete ===');
+    console.log('Final Result:', result);
+  </script>
+  
+</AppLayout>

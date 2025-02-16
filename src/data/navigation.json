@@ -1,0 +1,16 @@
+[
+  {
+    "href": "/",
+    "text": "Home"
+  },
+  {
+    "href": "/projects/",
+    "text": "Experence"
+  },
+  {
+    "href": "https://github.com/danicgd",
+    "target": "_blank",
+    "rel": "noopener noreferrer",
+    "text": "GitHub"
+  }
+]

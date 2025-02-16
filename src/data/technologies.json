@@ -1,0 +1,70 @@
+{
+  "Script Development": [
+    {
+      "text": "Python",
+      "logo": "mdi:language-python"
+    }    
+  ],
+  "Development Tools": [
+    {
+      "text": "Visual Studio Code",
+      "logo": "mdi:visual-studio-code"
+    },
+    {
+      "text": "Git",
+      "logo": "mdi:git"
+    },
+    {
+      "text": "GitLab",
+      "logo": "mdi:gitlab"
+    },
+    {
+      "text": "IntelliJ",
+      "logo": "cib:intellijidea"
+    },
+    {
+      "text": "PyCharm",
+      "logo": "cib:python"
+    }
+  ],
+  "Operating Systems": [
+    {
+      "text": "Windows",
+      "logo": "mdi:windows"
+    },
+    {
+      "text": "Ubuntu",
+      "logo": "mdi:ubuntu"
+    }
+  ],
+  "Other Programming Languages and Technologies": [
+    {
+      "text": "Java",
+      "logo": "mdi:language-java"
+    },
+    {
+      "text": "Apache JMeter",
+      "logo": "cib:apache"
+    },
+    {
+      "text": "Postman",
+      "logo": "cib:postman"
+    }
+  ],
+  "Databases": [
+    {
+      "text": "PostgreSQL",
+      "logo": "cib:postgresql"
+    },
+    {
+      "text": "ElasticSearch",
+      "logo": "cib:elastic"
+    }
+  ],
+  "Other Software": [
+    {
+      "text": "Brave",
+      "logo": "cib:brave"
+    }
+  ]
+}

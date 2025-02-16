@@ -1,0 +1,42 @@
+[
+  {
+    "name": "DATYS",
+    "stars": "QA Analist",
+    "website": "https://www.linkedin.com/company/datyscuba/about/",
+    "description": "Design, development, and execution of test automation scripts using Python and Playwright, focusing on frontend and backend functionality validation, including visual regression, load, and stress testing. Creation and maintenance of robust test cases, automation suites, and regression testing to ensure software quality. Use of Postman for manual and automated API testing, including collection creation, regression testing, and JSON response validation. Implementation of load and stress testing with JMeter to evaluate web application and API performance and scalability. Proficient in Git and GitLab for version control and CI/CD. Skilled in defect identification, reporting, and tracking, collaborating closely with development teams to deliver high-quality products.",
+    "languages": [
+      "Python",
+      "JMeter",
+      "Playwright"
+    ],
+    "role": "2024"
+  },
+  {
+    "name": "DATYS",
+    "stars": "Backend Developer",
+    "website": "https://www.linkedin.com/company/datyscuba/about/",
+    "description": "Development of backend web applications using microservices architecture with technologies such as Java, Spring Boot, Spring Cloud, SQL (PostgreSQL), Git, and GitLab. Proficient in designing, implementing, and maintaining scalable and efficient microservices, ensuring seamless integration and robust performance. Experienced in version control and CI/CD pipelines to deliver high-quality software solutions.",
+    "languages": [
+      "Java",
+      "SpringBoot",
+      "SpringCloud",
+      "PostgreSQL",
+      "GitLab",
+      "Git"
+    ],
+    "role": "2024"
+  },
+  {
+    "name": "Universidad de Oriente",
+    "stars": "FullStack Developer",
+    "website": "https://www.uo.edu.cu/",
+    "description": "Analysis and normalization of PostgreSQL databases to ensure efficient data management and integrity. Development of frontend for a raw material collection web application using ReactJS, creating responsive and user-friendly interfaces. Skilled in designing and implementing database structures and interactive web solutions.",
+    "languages": [
+      "ReactJs",
+      "PostgreSQL",
+      "GitLab",
+      "Git"
+    ],
+    "role": "2018-2023"
+  }
+]
